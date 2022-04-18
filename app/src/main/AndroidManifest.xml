@@ -12,15 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SubmissionStoryApp">
         <activity
-            android:name=".ui.activity.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.SubmissionStoryApp.NoActionBar" />
         <activity
-            android:name=".ui.activity.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,16 +1,16 @@
-package com.bangkit.submissionstoryapp.ui.viewmodels
+package com.bangkit.submissionstoryapp.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.bangkit.submissionstoryapp.data.remote.model.User
+import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.ui.UserPreference
 import kotlinx.coroutines.launch
 
 class MainViewmodels(private val pref: UserPreference) : ViewModel()  {
 
-    fun getUser(): LiveData<User> {
+    fun getUser(): LiveData<Authentication> {
         return pref.getUser().asLiveData()
     }
 

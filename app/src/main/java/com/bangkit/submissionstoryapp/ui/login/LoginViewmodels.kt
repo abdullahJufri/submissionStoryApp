@@ -1,17 +1,17 @@
-package com.bangkit.submissionstoryapp.ui.viewmodels
+package com.bangkit.submissionstoryapp.ui.login
 
 import android.content.ContentValues
-import android.content.Intent
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bangkit.submissionstoryapp.data.remote.api.ApiConfig
+import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.data.remote.model.LoginResponse
 import com.bangkit.submissionstoryapp.data.remote.model.LoginResult
-import com.bangkit.submissionstoryapp.data.remote.model.User
-import com.bangkit.submissionstoryapp.data.utils.Event
-import com.bangkit.submissionstoryapp.ui.Authentication
 import com.bangkit.submissionstoryapp.ui.UserPreference
-import com.bangkit.submissionstoryapp.utils
+import com.bangkit.submissionstoryapp.utils.utils
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +27,7 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
     private var _user = MutableLiveData<LoginResult>()
     val user: LiveData<LoginResult> = _user
 
-    fun login(email: String, password: String,callback: utils.ApiCallbackString) {
+    fun login(email: String, password: String, callback: utils.ApiCallbackString) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().login(email, password)
         client.enqueue(object : Callback<LoginResponse> {
@@ -43,7 +43,7 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
 
                     callback.onResponse(response.body() != null, SUCCESS)
 
-                    val model = User(
+                    val model = Authentication(
                         responseBody?.loginResult!!.name,
                         email,
                         password,
@@ -69,9 +69,9 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
         })
     }
 
-    fun saveUser(user: User) {
+    fun saveUser(authentication: com.bangkit.submissionstoryapp.data.remote.model.Authentication) {
         viewModelScope.launch {
-            pref.saveUser(user)
+            pref.saveUser(authentication)
         }
     }
 
@@ -79,7 +79,6 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
         private const val TAG = "SignInViewModel"
         private const val SUCCESS = "success"
     }
-
 
 
 }

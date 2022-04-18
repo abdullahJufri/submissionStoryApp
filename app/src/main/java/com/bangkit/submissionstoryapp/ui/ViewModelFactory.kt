@@ -2,8 +2,8 @@ package com.bangkit.submissionstoryapp.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.bangkit.submissionstoryapp.ui.viewmodels.LoginViewmodels
-import com.bangkit.submissionstoryapp.ui.viewmodels.MainViewmodels
+import com.bangkit.submissionstoryapp.ui.login.LoginViewmodels
+import com.bangkit.submissionstoryapp.ui.main.MainViewmodels
 
 
 class ViewModelFactory(private val pref: UserPreference) : ViewModelProvider.NewInstanceFactory() {

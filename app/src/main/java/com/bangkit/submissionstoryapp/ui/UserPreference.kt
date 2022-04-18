@@ -6,16 +6,16 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.bangkit.submissionstoryapp.data.remote.model.User
+import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 
 class UserPreference private constructor(private val dataStore: DataStore<androidx.datastore.preferences.core.Preferences>) {
 
-    fun getUser(): Flow<User> {
+    fun getUser(): Flow<Authentication> {
         return dataStore.data.map {
-            User(
+            Authentication(
                 it[NAME_KEY] ?: "",
                 it[EMAIL_KEY] ?: "",
                 it[PASSWORD_KEY] ?: "",
@@ -26,14 +26,14 @@ class UserPreference private constructor(private val dataStore: DataStore<androi
         }
     }
 
-    suspend fun saveUser(user: User) {
+    suspend fun saveUser(authentication: Authentication) {
         dataStore.edit {
-            it[NAME_KEY] = user.name
-            it[EMAIL_KEY] = user.email
-            it[PASSWORD_KEY] = user.password
-            it[USERID_KEY] = user.userId
-            it[TOKEN_KEY] = user.token
-            it[STATE_KEY] = user.isLogin
+            it[NAME_KEY] = authentication.name
+            it[EMAIL_KEY] = authentication.email
+            it[PASSWORD_KEY] = authentication.password
+            it[USERID_KEY] = authentication.userId
+            it[TOKEN_KEY] = authentication.token
+            it[STATE_KEY] = authentication.isLogin
 
         }
     }

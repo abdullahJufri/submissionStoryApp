@@ -1,4 +1,4 @@
-package com.bangkit.submissionstoryapp.ui.viewmodels
+package com.bangkit.submissionstoryapp.ui.home
 
 import android.util.Log
 import androidx.lifecycle.LiveData

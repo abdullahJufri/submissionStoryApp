@@ -1,25 +1,24 @@
-package com.bangkit.submissionstoryapp
+package com.bangkit.submissionstoryapp.ui.main
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.bangkit.submissionstoryapp.data.remote.model.User
+import com.bangkit.submissionstoryapp.R
+import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.databinding.ActivityMainBinding
 import com.bangkit.submissionstoryapp.ui.UserPreference
 import com.bangkit.submissionstoryapp.ui.ViewModelFactory
-import com.bangkit.submissionstoryapp.ui.activity.HomeActivity
-import com.bangkit.submissionstoryapp.ui.viewmodels.MainViewmodels
+import com.bangkit.submissionstoryapp.ui.home.HomeActivity
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore("settings")
+
 class MainActivity : AppCompatActivity() {
-    private lateinit var user: User
+    private lateinit var authentication: Authentication
     private lateinit var mainViewModel: MainViewmodels
     private lateinit var binding: ActivityMainBinding
 
@@ -41,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         )[MainViewmodels::class.java]
 
         mainViewModel.getUser().observe(this) {
-            user = User(
+            authentication = Authentication(
                 it.name,
                 it.email,
                 it.password,
@@ -49,14 +48,14 @@ class MainActivity : AppCompatActivity() {
                 it.token,
                 true
             )
-            binding.nameTextView.text = getString(R.string.greeting, user.name)
+            binding.nameTextView.text = getString(R.string.greeting, authentication.name)
         }
     }
 
     private fun buttonListener() {
         binding.btnLisStory.setOnClickListener {
             val moveToListStoryActivity = Intent(this@MainActivity, HomeActivity::class.java)
-            moveToListStoryActivity.putExtra(HomeActivity.EXTRA_USER, user)
+            moveToListStoryActivity.putExtra(HomeActivity.EXTRA_USER, authentication)
             startActivity(moveToListStoryActivity)
         }
 //        binding.ivSetting?.setOnClickListener {

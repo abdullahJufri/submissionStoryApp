@@ -1,10 +1,10 @@
-package com.bangkit.submissionstoryapp.ui.adapter
+package com.bangkit.submissionstoryapp.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.submissionstoryapp.DiffCallback
+import com.bangkit.submissionstoryapp.utils.DiffCallback
 import com.bangkit.submissionstoryapp.data.remote.model.ListStoryItem
 import com.bangkit.submissionstoryapp.databinding.ItemRowStoriesBinding
 import com.bumptech.glide.Glide

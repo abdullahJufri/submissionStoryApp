@@ -1,4 +1,4 @@
-package com.bangkit.submissionstoryapp
+package com.bangkit.submissionstoryapp.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import com.bangkit.submissionstoryapp.data.remote.model.ListStoryItem

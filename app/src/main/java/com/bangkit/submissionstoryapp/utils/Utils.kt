@@ -1,4 +1,4 @@
-package com.bangkit.submissionstoryapp
+package com.bangkit.submissionstoryapp.utils
 
 class utils {
 

@@ -1,4 +1,4 @@
-package com.bangkit.submissionstoryapp.ui.activity
+package com.bangkit.submissionstoryapp.ui.home
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +8,8 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkit.submissionstoryapp.data.remote.model.User
+import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.databinding.ActivityHomeBinding
-import com.bangkit.submissionstoryapp.ui.adapter.HomeAdapter
-import com.bangkit.submissionstoryapp.ui.viewmodels.HomeViewmodels
 
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -23,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
     private val binding get() = _binding
     private val viewModel by viewModels<HomeViewmodels>()
 
-    private lateinit var user: User
+    private lateinit var authentication: Authentication
     private lateinit var adapter: HomeAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
 //        setupToolbar()
 //        addStoryAction()
 
-        user = intent.getParcelableExtra(EXTRA_USER)!!
+        authentication = intent.getParcelableExtra(EXTRA_USER)!!
 
         setListStory()
         adapter = HomeAdapter()
@@ -103,7 +101,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setListStory() {
-        viewModel.showListStory(user.token)
+        viewModel.showListStory(authentication.token)
         viewModel.itemStory.observe(this) {
             adapter.setListStory(it)
         }
