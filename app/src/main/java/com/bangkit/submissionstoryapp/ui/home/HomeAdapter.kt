@@ -1,5 +1,6 @@
 package com.bangkit.submissionstoryapp.ui.home
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.submissionstoryapp.utils.DiffCallback
 import com.bangkit.submissionstoryapp.data.remote.model.ListStoryItem
 import com.bangkit.submissionstoryapp.databinding.ItemRowStoriesBinding
+import com.bangkit.submissionstoryapp.ui.detail.DetailStoryActivity
 import com.bumptech.glide.Glide
 
 class HomeAdapter: RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
@@ -49,9 +51,9 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
                 // image OnClickListener
                 imgItemImage.setOnClickListener {
-//                    val intent = Intent(it.context, DetailStoryActivity::class.java)
-//                    intent.putExtra(DetailStoryActivity.EXTRA_STORY, story)
-//                    it.context.startActivity(intent)
+                    val intent = Intent(it.context, DetailStoryActivity::class.java)
+                    intent.putExtra(DetailStoryActivity.EXTRA_STORY, story)
+                    it.context.startActivity(intent)
 //                }
                 }
             }

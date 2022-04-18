@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.SubmissionStoryApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -17,6 +18,13 @@
     <style name="Theme.SubmissionStoryApp.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+    <style name="ToolbarTheme" parent="Theme.SubmissionStoryApp">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:background">?attr/colorPrimaryVariant</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+<!--        <item name="android:fontFamily">@font/bold</item>-->
     </style>
 
     <style name="Theme.SubmissionStoryApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -18,4 +18,6 @@
     <string name="information">tesd</string>
     <string name="sign_in_success">sukse</string>
     <string name="sign_in_failed">gagal</string>
+    <string name="detail_story">detail</string>
+    <string name="name">name</string>
 </resources>
