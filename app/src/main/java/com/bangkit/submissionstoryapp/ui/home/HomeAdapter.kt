@@ -44,8 +44,8 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 //                    .placeholder(R.drawable.ic_place_holder)
 //                    .error(R.drawable.ic_broken_image)
                     .into(imgItemImage)
-                tvName.text = story.name
-//                tvDescription.text = story.description
+                tvItemName.text = story.name
+                tvItemDesc.text = story.description
 //                tvCreatedTime.text =
 //                    binding.root.resources.getString(R.string.created_add, story.createdAt)
 

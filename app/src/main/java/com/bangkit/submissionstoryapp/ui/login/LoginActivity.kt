@@ -16,7 +16,8 @@ import com.bangkit.submissionstoryapp.databinding.ActivityLoginBinding
 import com.bangkit.submissionstoryapp.ui.UserPreference
 import com.bangkit.submissionstoryapp.ui.ViewModelFactory
 import com.bangkit.submissionstoryapp.ui.main.MainActivity
-import com.bangkit.submissionstoryapp.utils.utils
+import com.bangkit.submissionstoryapp.utils.ApiCallbackString
+
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -45,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
                 val msg = getString(R.string.fill_field)
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
             } else {
-                viewModel.login(email, password, object : utils.ApiCallbackString {
+                viewModel.login(email, password, object : ApiCallbackString {
                     override fun onResponse(success: Boolean, message: String) {
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         intent.flags =

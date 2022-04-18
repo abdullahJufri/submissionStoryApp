@@ -1,6 +1,7 @@
 package com.bangkit.submissionstoryapp.ui.home
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -10,6 +11,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.databinding.ActivityHomeBinding
+import com.bangkit.submissionstoryapp.ui.addstory.AddStoryActivity
 
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -35,6 +37,8 @@ class HomeActivity : AppCompatActivity() {
 
         setListStory()
         adapter = HomeAdapter()
+
+        addStoryAction()
 
 //        showSnackBar()
 
@@ -112,13 +116,13 @@ class HomeActivity : AppCompatActivity() {
         setListStory()
     }
 
-//    private fun addStoryAction(){
-//        binding?.ivAddStory?.setOnClickListener {
-//            val moveToAddStoryActivity = Intent(this, AddStoryActivity::class.java)
-//            moveToAddStoryActivity.putExtra(AddStoryActivity.EXTRA_USER, user)
-//            startActivity(moveToAddStoryActivity)
-//        }
-//    }
+    private fun addStoryAction(){
+        binding?.fabAdd?.setOnClickListener {
+            val moveToAddStoryActivity = Intent(this, AddStoryActivity::class.java)
+            moveToAddStoryActivity.putExtra(AddStoryActivity.EXTRA_USER, authentication)
+            startActivity(moveToAddStoryActivity)
+        }
+    }
 
     companion object {
         const val EXTRA_USER = "user"

@@ -11,7 +11,8 @@ import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.data.remote.model.LoginResponse
 import com.bangkit.submissionstoryapp.data.remote.model.LoginResult
 import com.bangkit.submissionstoryapp.ui.UserPreference
-import com.bangkit.submissionstoryapp.utils.utils
+import com.bangkit.submissionstoryapp.utils.ApiCallbackString
+
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +28,7 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
     private var _user = MutableLiveData<LoginResult>()
     val user: LiveData<LoginResult> = _user
 
-    fun login(email: String, password: String, callback: utils.ApiCallbackString) {
+    fun login(email: String, password: String, callback: ApiCallbackString) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().login(email, password)
         client.enqueue(object : Callback<LoginResponse> {

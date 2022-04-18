@@ -48,9 +48,9 @@ class DetailStoryActivity : AppCompatActivity() {
 
     private fun displayResult() {
         with(binding){
-            tvName.text = vm.storyItem.name
+            tvItemName.text = vm.storyItem.name
 //            tvCreatedTime.text = getString(R.string.created_add, vm.storyItem.createdAt)
-//            tvDescription.text = vm.storyItem.description
+            tvItemDesc.text = vm.storyItem.description
 
             Glide.with(ivStory)
                 .load(vm.storyItem.photoUrl) // URL Avatar
