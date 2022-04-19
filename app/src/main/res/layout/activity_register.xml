@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.login.LoginActivity">
-
+    tools:context=".ui.register.RegisterActivity">
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -20,55 +19,52 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
-    <com.bangkit.submissionstoryapp.ui.customeview.MyEditTextEmail
-        android:id="@+id/my_email"
-        android:layout_width="369dp"
-        android:layout_height="45dp"
-        android:layout_gravity="start"
+
+    <EditText
+        android:id="@+id/editText_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:hint="masukan nama"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="masukan email"
-        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.bangkit.submissionstoryapp.ui.customeview.MyEditTextPassword
-        android:id="@+id/my_password"
+    <com.bangkit.submissionstoryapp.ui.customeview.MyEditTextEmail
+        android:id="@+id/myEditTextEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="masukan password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_name" />
+
+    <com.bangkit.submissionstoryapp.ui.customeview.MyEditTextPassword
+        android:id="@+id/myEditTextPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_email" />
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="login"
-        app:layout_constraintEnd_toStartOf="@+id/btn_register"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_password" />
+        app:layout_constraintTop_toBottomOf="@+id/myEditTextEmail" />
 
     <Button
         android:id="@+id/btn_register"
-        android:text="register"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_login"
-        app:layout_constraintTop_toBottomOf="@+id/my_password" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myEditTextPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

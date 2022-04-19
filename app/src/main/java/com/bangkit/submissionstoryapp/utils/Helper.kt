@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Environment
+import android.view.View
 import android.widget.Toast
 import com.bangkit.submissionstoryapp.R
 import java.io.*
@@ -112,4 +113,12 @@ fun showToast(context: Context, text : String){
         text,
         Toast.LENGTH_SHORT
     ).show()
+}
+
+fun showLoading(isLoading: Boolean, view: View) {
+    if (isLoading) {
+        view.visibility = View.VISIBLE
+    } else {
+        view.visibility = View.INVISIBLE
+    }
 }

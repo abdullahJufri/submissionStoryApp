@@ -1,6 +1,6 @@
 package com.bangkit.submissionstoryapp.data.remote.api
 
-import com.bangkit.submissionstoryapp.data.remote.model.AddStoryResponse
+import com.bangkit.submissionstoryapp.data.remote.model.InfoResponse
 import com.bangkit.submissionstoryapp.data.remote.model.LoginResponse
 import com.bangkit.submissionstoryapp.data.remote.model.StoriesResponse
 import okhttp3.MultipartBody
@@ -26,5 +26,13 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Part ("description") des: String,
         @Part file: MultipartBody.Part
-    ): Call<AddStoryResponse>
+    ): Call<InfoResponse>
+
+    @FormUrlEncoded
+    @POST("register")
+    fun register(
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("password") pass: String
+    ): Call<InfoResponse>
 }

@@ -23,4 +23,6 @@
     <string name="invalid_permission">Can\'t get permission</string>
     <string name="upload_success">sukses</string>
     <string name="upload_failed">failed</string>
+    <string name="register_success">sukses</string>
+    <string name="register_failed">failed</string>
 </resources>

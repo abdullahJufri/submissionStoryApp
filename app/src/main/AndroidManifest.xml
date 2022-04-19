@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SubmissionStoryApp">
         <activity
+            android:name=".ui.register.RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.addstory.AddStoryActivity"
             android:exported="false" />
         <activity
@@ -27,7 +30,6 @@
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.addstory.CameraActivity"
             android:exported="false" />

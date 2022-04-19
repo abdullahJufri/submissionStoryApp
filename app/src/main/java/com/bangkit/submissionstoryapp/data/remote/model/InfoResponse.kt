@@ -2,7 +2,7 @@ package com.bangkit.submissionstoryapp.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class AddStoryResponse(
+data class InfoResponse(
 
     @field:SerializedName("error")
     val error: Boolean,

@@ -16,7 +16,9 @@ import com.bangkit.submissionstoryapp.databinding.ActivityLoginBinding
 import com.bangkit.submissionstoryapp.ui.UserPreference
 import com.bangkit.submissionstoryapp.ui.ViewModelFactory
 import com.bangkit.submissionstoryapp.ui.main.MainActivity
+import com.bangkit.submissionstoryapp.ui.register.RegisterActivity
 import com.bangkit.submissionstoryapp.utils.ApiCallbackString
+import com.bangkit.submissionstoryapp.utils.showLoading
 
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -39,6 +41,10 @@ class LoginActivity : AppCompatActivity() {
         setupViewModel()
 //        buttonListener()
 
+        viewModel.isLoading.observe(this) {
+            showLoading(it, binding.progressBar)
+        }
+
         binding.btnLogin.setOnClickListener {
             val email = binding.myEmail.text.toString()
             val password = binding.myPassword.text.toString()
@@ -59,6 +65,11 @@ class LoginActivity : AppCompatActivity() {
             }
 
 
+        }
+
+        binding.btnRegister.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+            finish()
         }
 //        setupViewModel()\
 //        viewModel = ViewModelProvider(this,ViewModelFactory)
