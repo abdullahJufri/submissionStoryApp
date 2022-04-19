@@ -25,4 +25,6 @@
     <string name="upload_failed">failed</string>
     <string name="register_success">sukses</string>
     <string name="register_failed">failed</string>
+    <string name="upload_fail">failed</string>
+    <string name="log_out_success">sukses</string>
 </resources>

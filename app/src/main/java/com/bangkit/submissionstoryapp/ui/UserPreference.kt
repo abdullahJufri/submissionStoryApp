@@ -47,8 +47,13 @@ class UserPreference private constructor(private val dataStore: DataStore<androi
 //    }
 
     suspend fun logout() {
-        dataStore.edit { preferences ->
-            preferences[STATE_KEY] = false
+        dataStore.edit {
+            it[STATE_KEY] = false
+            it[NAME_KEY] = ""
+            it[EMAIL_KEY] = ""
+            it[USERID_KEY] = ""
+            it[TOKEN_KEY] = ""
+            it[PASSWORD_KEY] = ""
         }
     }
 

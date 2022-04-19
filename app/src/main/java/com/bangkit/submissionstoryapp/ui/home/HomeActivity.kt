@@ -2,26 +2,38 @@ package com.bangkit.submissionstoryapp.ui.home
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.submissionstoryapp.R
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.databinding.ActivityHomeBinding
+import com.bangkit.submissionstoryapp.ui.UserPreference
+import com.bangkit.submissionstoryapp.ui.ViewModelFactory
 import com.bangkit.submissionstoryapp.ui.addstory.AddStoryActivity
+import com.bangkit.submissionstoryapp.ui.login.LoginActivity
+import com.bangkit.submissionstoryapp.ui.main.MainViewmodels
 
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
 class HomeActivity : AppCompatActivity() {
-//
-//    private lateinit var storyViewModel: ShareUserViewmodels
+
 
     private var _binding: ActivityHomeBinding? = null
     private val binding get() = _binding
     private val viewModel by viewModels<HomeViewmodels>()
+    private lateinit var mainViewmodels: MainViewmodels
+
 
     private lateinit var authentication: Authentication
     private lateinit var adapter: HomeAdapter
@@ -32,6 +44,7 @@ class HomeActivity : AppCompatActivity() {
 //
 //        setupToolbar()
 //        addStoryAction()
+        setupViewModel()
 
         authentication = intent.getParcelableExtra(EXTRA_USER)!!
 
@@ -56,9 +69,56 @@ class HomeActivity : AppCompatActivity() {
 //        supportActionBar?.setDisplayShowHomeEnabled(true)
 //    }
 
+    private fun setupViewModel() {
+        mainViewmodels = ViewModelProvider(
+            this,
+            ViewModelFactory(UserPreference.getInstance(dataStore))
+        )[MainViewmodels::class.java]
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.option_menu, menu)
+
+//        val addMenu = menu.findItem(R.id.menu_add)
+//        val logoutMenu = menu.findItem(R.id.menu_logout)
+//
+//        addMenu.isVisible = false
+//        logoutMenu.isVisible = false
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_language -> {
+                val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+                startActivity(intent)
+                return true
+            }
+
+            R.id.menu_logout -> {
+                mainViewmodels.logout()
+                AlertDialog.Builder(this).apply {
+                    setTitle(getString(R.string.information))
+                    setMessage(getString(R.string.log_out_success))
+                    setPositiveButton(getString(R.string.continue_)) { _, _ ->
+                        startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
+                        finish()
+                    }
+                    create()
+                    show()
+                }
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+      return true
     }
 
 //    private fun showSnackBar() {
@@ -116,7 +176,7 @@ class HomeActivity : AppCompatActivity() {
         setListStory()
     }
 
-    private fun addStoryAction(){
+    private fun addStoryAction() {
         binding?.fabAdd?.setOnClickListener {
             val moveToAddStoryActivity = Intent(this, AddStoryActivity::class.java)
             moveToAddStoryActivity.putExtra(AddStoryActivity.EXTRA_USER, authentication)
