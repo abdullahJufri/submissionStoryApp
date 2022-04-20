@@ -2,6 +2,7 @@ package com.bangkit.submissionstoryapp.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.bangkit.submissionstoryapp.data.local.UserPreference
 import com.bangkit.submissionstoryapp.ui.login.LoginViewmodels
 import com.bangkit.submissionstoryapp.ui.main.MainViewmodels
 

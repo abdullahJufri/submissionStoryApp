@@ -15,14 +15,9 @@ import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-
-
-
-
-    interface ApiCallbackString {
-        fun onResponse(success: Boolean, message: String)
-    }
-
+interface ApiCallbackString {
+    fun onResponse(success: Boolean, message: String)
+}
 
 private const val FILENAME_FORMAT = "dd-MMM-yyyy"
 
@@ -110,7 +105,7 @@ fun reduceFileImage(file: File): File {
     return file
 }
 
-fun showToast(context: Context, text : String){
+fun showToast(context: Context, text: String) {
     Toast.makeText(
         context,
         text,

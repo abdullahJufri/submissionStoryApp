@@ -31,11 +31,14 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
+        android:src="@drawable/ic_baseline_add_24"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"
+        android:layout_gravity="end|bottom"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/Descriptions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

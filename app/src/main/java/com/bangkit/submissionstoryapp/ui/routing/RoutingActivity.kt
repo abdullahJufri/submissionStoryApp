@@ -1,11 +1,11 @@
 package com.bangkit.submissionstoryapp.ui.routing
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.submissionstoryapp.R
-import com.bangkit.submissionstoryapp.ui.UserPreference
+import com.bangkit.submissionstoryapp.data.local.UserPreference
 import com.bangkit.submissionstoryapp.ui.ViewModelFactory
 import com.bangkit.submissionstoryapp.ui.login.LoginActivity
 import com.bangkit.submissionstoryapp.ui.main.MainActivity
@@ -24,7 +24,6 @@ class RoutingActivity : AppCompatActivity() {
     }
 
 
-
     private fun setupViewModel() {
         mainViewModel = ViewModelProvider(
             this,
@@ -35,7 +34,7 @@ class RoutingActivity : AppCompatActivity() {
             if (it.isLogin) {
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
-            }else{
+            } else {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }

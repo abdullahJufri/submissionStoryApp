@@ -17,8 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.submissionstoryapp.R
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.databinding.ActivityHomeBinding
-import com.bangkit.submissionstoryapp.databinding.ActivityLoginBinding
-import com.bangkit.submissionstoryapp.ui.UserPreference
+import com.bangkit.submissionstoryapp.data.local.UserPreference
 import com.bangkit.submissionstoryapp.ui.ViewModelFactory
 import com.bangkit.submissionstoryapp.ui.addstory.AddStoryActivity
 import com.bangkit.submissionstoryapp.ui.login.LoginActivity
@@ -59,6 +58,7 @@ class HomeActivity : AppCompatActivity() {
         binding.rvStories.adapter = adapter
 
     }
+
     private fun setupViewModel() {
         mainViewmodels = ViewModelProvider(
             this,
@@ -101,7 +101,7 @@ class HomeActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-      return true
+        return true
     }
 
     private fun setListStory() {

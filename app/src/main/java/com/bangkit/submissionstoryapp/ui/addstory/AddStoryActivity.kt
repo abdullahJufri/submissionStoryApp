@@ -6,13 +6,13 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bangkit.submissionstoryapp.R
@@ -57,12 +57,10 @@ class AddStoryActivity : AppCompatActivity() {
     }
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddStoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        setupToolbar()
 
         user = intent.getParcelableExtra(EXTRA_USER)!!
 
@@ -76,7 +74,6 @@ class AddStoryActivity : AppCompatActivity() {
     }
 
 
-
     private fun getPermission() {
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
@@ -87,11 +84,6 @@ class AddStoryActivity : AppCompatActivity() {
         }
     }
 
-//    private fun setupToolbar() {
-//        setSupportActionBar(binding.myToolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar?.setHomeButtonEnabled(true)
-//    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
@@ -161,7 +153,7 @@ class AddStoryActivity : AppCompatActivity() {
             })
 
         } else {
-//            showToast(this@AddStoryActivity, getString(R.string.no_attach_file))
+            showToast(this@AddStoryActivity, getString(R.string.error_file))
         }
     }
 
@@ -197,7 +189,6 @@ class AddStoryActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
     companion object {

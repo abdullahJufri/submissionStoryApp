@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.submissionstoryapp.R
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.databinding.ActivityMainBinding
-import com.bangkit.submissionstoryapp.ui.UserPreference
+import com.bangkit.submissionstoryapp.data.local.UserPreference
 import com.bangkit.submissionstoryapp.ui.ViewModelFactory
 import com.bangkit.submissionstoryapp.ui.home.HomeActivity
 
@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupViewModel()
-//        playAnimation()
         buttonListener()
     }
 
@@ -58,21 +57,6 @@ class MainActivity : AppCompatActivity() {
             moveToListStoryActivity.putExtra(HomeActivity.EXTRA_USER, authentication)
             startActivity(moveToListStoryActivity)
         }
-//        binding.ivSetting?.setOnClickListener {
-//            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
-//        }
-//        binding.btnLogOut.setOnClickListener {
-//            mainViewModel.logout()
-//            AlertDialog.Builder(this).apply {
-//                setTitle(getString(R.string.information))
-//                setMessage(getString(R.string.log_out_success))
-//                setPositiveButton(getString(R.string.continue_)) { _, _ ->
-//                    startActivity(Intent(this@MainActivity, SignInActivity::class.java))
-//                    finish()
-//                }
-//                create()
-//                show()
-//            }
-//        }
+
     }
 }

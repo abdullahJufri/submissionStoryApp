@@ -1,4 +1,4 @@
-package com.bangkit.submissionstoryapp.ui
+package com.bangkit.submissionstoryapp.data.local
 
 
 import androidx.datastore.core.DataStore
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 
-class UserPreference private constructor(private val dataStore: DataStore<androidx.datastore.preferences.core.Preferences>) {
+class UserPreference private constructor(private val dataStore: DataStore<Preferences>) {
 
     fun getUser(): Flow<Authentication> {
         return dataStore.data.map {

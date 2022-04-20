@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
-import com.bangkit.submissionstoryapp.ui.UserPreference
+import com.bangkit.submissionstoryapp.data.local.UserPreference
 import kotlinx.coroutines.launch
 
 class MainViewmodels(private val pref: UserPreference) : ViewModel()  {

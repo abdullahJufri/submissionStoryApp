@@ -12,7 +12,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.submissionstoryapp.R
 import com.bangkit.submissionstoryapp.databinding.ActivityLoginBinding
-import com.bangkit.submissionstoryapp.ui.UserPreference
+import com.bangkit.submissionstoryapp.data.local.UserPreference
 import com.bangkit.submissionstoryapp.ui.ViewModelFactory
 import com.bangkit.submissionstoryapp.ui.main.MainActivity
 import com.bangkit.submissionstoryapp.ui.register.RegisterActivity

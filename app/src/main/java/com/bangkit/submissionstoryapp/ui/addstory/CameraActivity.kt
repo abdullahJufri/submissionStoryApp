@@ -42,9 +42,6 @@ class CameraActivity : AppCompatActivity() {
         }
     }
 
-
-
-
     public override fun onResume() {
         super.onResume()
         hideSystemUI()
@@ -134,77 +131,4 @@ class CameraActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-
-//    public override fun onResume() {
-//        super.onResume()
-//        hideSystemUI()
-//        startCamera()
-//    }
-//
-//    private fun takePhoto() {
-//        val imageCapture = imageCapture ?: return
-//
-//        val photoFile = createFile(application)
-//
-//        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
-//        imageCapture.takePicture(
-//            outputOptions,
-//            ContextCompat.getMainExecutor(this),
-//            object : ImageCapture.OnImageSavedCallback {
-//                override fun onError(exc: ImageCaptureException) {
-////                    showToast(this@CameraActivity,"Gagal mengambil gambar.")
-//                }
-//
-//                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-//                    val intent = Intent()
-//                    intent.putExtra("picture", photoFile)
-//                    intent.putExtra(
-//                        "isBackCamera",
-//                        cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
-//                    )
-//                    setResult(CAMERA_X_RESULT, intent)
-//                    finish()
-//                }
-//            }
-//        )
-//    }
-//
-//    private fun startCamera() {
-//        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
-//        cameraProviderFuture.addListener({
-//            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-//            val preview = Preview.Builder()
-//                .build()
-//                .also {
-//                    it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
-//                }
-//
-//            imageCapture = ImageCapture.Builder().build()
-//
-//            try {
-//                cameraProvider.unbindAll()
-//                cameraProvider.bindToLifecycle(
-//                    this,
-//                    cameraSelector,
-//                    preview,
-//                    imageCapture
-//                )
-//            } catch (exc: Exception) {
-////                showToast(this,"Gagal memunculkan kamera.")
-//            }
-//        }, ContextCompat.getMainExecutor(this))
-//    }
-//
-//    private fun hideSystemUI() {
-//        @Suppress("DEPRECATION")
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//            window.insetsController?.hide(WindowInsets.Type.statusBars())
-//        } else {
-//            window.setFlags(
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN
-//            )
-//        }
-//        supportActionBar?.hide()
-//    }
 }

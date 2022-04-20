@@ -1,16 +1,13 @@
 package com.bangkit.submissionstoryapp.ui.login
 
-import android.content.ContentValues
 import android.util.Log
 import androidx.lifecycle.*
 import com.bangkit.submissionstoryapp.data.remote.api.ApiConfig
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.data.remote.model.LoginResponse
 import com.bangkit.submissionstoryapp.data.remote.model.LoginResult
-import com.bangkit.submissionstoryapp.ui.UserPreference
-import com.bangkit.submissionstoryapp.ui.register.RegisterViewmodels
+import com.bangkit.submissionstoryapp.data.local.UserPreference
 import com.bangkit.submissionstoryapp.utils.ApiCallbackString
-
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import org.json.JSONTokener
@@ -55,7 +52,8 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
 
                 } else {
                     Log.e(TAG, "onFailure1: ${response.message()}")
-                    val jsonObject = JSONTokener(response.errorBody()!!.string()).nextValue() as JSONObject
+                    val jsonObject =
+                        JSONTokener(response.errorBody()!!.string()).nextValue() as JSONObject
                     val message = jsonObject.getString("message")
                     callback.onResponse(false, message)
                 }
@@ -74,7 +72,8 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
     fun getUser(): LiveData<Authentication> {
         return pref.getUser().asLiveData()
     }
-    fun saveUser(authentication: com.bangkit.submissionstoryapp.data.remote.model.Authentication) {
+
+    fun saveUser(authentication: Authentication) {
         viewModelScope.launch {
             pref.saveUser(authentication)
         }

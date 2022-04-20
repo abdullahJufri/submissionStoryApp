@@ -60,7 +60,7 @@ class AddStoryViewmodels : ViewModel() {
     }
 
     companion object {
-        private const val TAG = "AddStoryViewModel"
+        private const val TAG = "addStoryViewmodel"
         private const val SUCCESS = "success"
     }
 }

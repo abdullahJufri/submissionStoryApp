@@ -18,7 +18,7 @@ class RegisterViewmodels : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun register(name: String, email: String, password: String, callback: ApiCallbackString){
+    fun register(name: String, email: String, password: String, callback: ApiCallbackString) {
         _isLoading.value = true
 
         val client = ApiConfig().getApiService().register(name, email, password)
@@ -37,7 +37,8 @@ class RegisterViewmodels : ViewModel() {
                     Log.e(TAG, "onFailure1: ${response.message()}")
 
                     // get message error
-                    val jsonObject = JSONTokener(response.errorBody()!!.string()).nextValue() as JSONObject
+                    val jsonObject =
+                        JSONTokener(response.errorBody()!!.string()).nextValue() as JSONObject
                     val message = jsonObject.getString("message")
                     callback.onResponse(false, message)
                 }
