@@ -52,7 +52,7 @@ class RegisterViewmodels : ViewModel() {
     }
 
     companion object {
-        private const val TAG = "RegisterViewModel"
+        private const val TAG = "registerViewmodel"
         private const val SUCCESS = "success"
     }
 }

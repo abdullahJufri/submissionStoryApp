@@ -55,7 +55,7 @@ class MyEditTextEmail : AppCompatEditText, View.OnTouchListener {
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
     private fun UnvalidEmail(){
-        error = "not valid"
+        error = context.getString(R.string.invalid_email)
     }
     private fun showClearButton() {
         setButtonDrawables(endOfTheText = clearButtonImage)

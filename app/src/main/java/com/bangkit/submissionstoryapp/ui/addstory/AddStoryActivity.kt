@@ -168,9 +168,9 @@ class AddStoryActivity : AppCompatActivity() {
     private fun showAlertDialog(param: Boolean, message: String) {
         if (param) {
             AlertDialog.Builder(this).apply {
-                setTitle(getString(R.string.information))
+                setTitle(getString(R.string.information_title))
                 setMessage(getString(R.string.upload_success))
-                setPositiveButton(getString(R.string.continue_)) { _, _ ->
+                setPositiveButton(getString(R.string.btn_continue)) { _, _ ->
                     finish()
                 }
                 create()
@@ -178,9 +178,9 @@ class AddStoryActivity : AppCompatActivity() {
             }
         } else {
             AlertDialog.Builder(this).apply {
-                setTitle(getString(R.string.information))
+                setTitle(getString(R.string.information_title))
                 setMessage(getString(R.string.upload_failed) + ", $message")
-                setPositiveButton(getString(R.string.continue_)) { _, _ ->
+                setPositiveButton(getString(R.string.btn_continue)) { _, _ ->
                     binding.progressBar.visibility = View.GONE
                 }
                 create()

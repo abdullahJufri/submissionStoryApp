@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.util.Patterns
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
+import com.bangkit.submissionstoryapp.R
 
 class MyEditTextPassword: AppCompatEditText {
     private var passwordLength = 0
@@ -47,7 +48,7 @@ class MyEditTextPassword: AppCompatEditText {
     private fun isUnvalidPassword(password: CharSequence): Boolean {
         passwordLength = password.length
         if (passwordLength < 6){
-            error = "Kurang dari 6"
+            error = context.getString(R.string.invalid_password)
         }
        return true
 

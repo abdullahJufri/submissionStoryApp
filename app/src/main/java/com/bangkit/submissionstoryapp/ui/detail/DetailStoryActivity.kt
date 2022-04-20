@@ -1,7 +1,5 @@
 package com.bangkit.submissionstoryapp.ui.detail
 
-import android.graphics.text.LineBreaker
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -14,32 +12,18 @@ class DetailStoryActivity : AppCompatActivity() {
 
     private lateinit var story: ListStoryItem
     private lateinit var binding: ActivityDetailStoryBinding
-
-
-    private val vm: DetailStoryViewmodels by viewModels()
+    private val viewmodel: DetailStoryViewmodels by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailStoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // set text view description to justify
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            run {
-//                binding.tvDescription.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
-//            }
-//        }
 
         story = intent.getParcelableExtra(EXTRA_STORY)!!
-        vm.setDetailStory(story)
+        viewmodel.setDetailStory(story)
         displayResult()
-//        setupToolbar()
     }
 
-//    private fun setupToolbar(){
-//        setSupportActionBar(binding.toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar?.setDisplayShowHomeEnabled(true)
-//    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
@@ -48,19 +32,18 @@ class DetailStoryActivity : AppCompatActivity() {
 
     private fun displayResult() {
         with(binding){
-            tvItemName.text = vm.storyItem.name
-//            tvCreatedTime.text = getString(R.string.created_add, vm.storyItem.createdAt)
-            tvItemDesc.text = vm.storyItem.description
+            tvItemName.text = viewmodel.storyItem.name
+            tvItemDesc.text = viewmodel.storyItem.description
 
-            Glide.with(ivStory)
-                .load(vm.storyItem.photoUrl) // URL Avatar
-//                .placeholder(R.drawable.ic_place_holder)
-//                .error(R.drawable.ic_broken_image)
-                .into(ivStory)
+            Glide.with(imgPhoto)
+                .load(viewmodel.storyItem.photoUrl) // URL Avatar
+                .placeholder(R.drawable.ic_baseline_image_gray)
+                .error(R.drawable.ic_baseline_broken_image_gray)
+                .into(imgPhoto)
         }
     }
 
     companion object {
-        const val EXTRA_STORY = "story"
+        const val EXTRA_STORY = "extra_story"
     }
 }

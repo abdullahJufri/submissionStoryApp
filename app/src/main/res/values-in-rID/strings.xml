@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">submissionStoryApp</string>
+
+    <string name="title_activity_login">LoginActivity</string>
+
+    <string name="next">Lanjut</string>
+    <string name="previous">Sebelumnya</string>
+    <string name="menu_logout">Keluar</string>
+    <string name="greeting">Halo %1$s</string>
+    <string name="detail_story">detail</string>
+    <string name="name">nama</string>
+    <string name="invalid_permission">Tidak mendapat izin</string>
+    <string name="upload_success">Berhasil mengunggah</string>
+    <string name="upload_failed">Gagal mengunggah</string>
+    <string name="register_success">Berhasil Mendaftar</string>
+    <string name="register_failed">Gagal mendaftar</string>
+    <string name="upload_fail">gagal</string>
+    <string name="log_out_success">Berhasil Keluar</string>
+    <string name="hint_email">Masukan email anda</string>
+    <string name="hint_password">Masukan katasandi anda</string>
+    <string name="login">masuk</string>
+    <string name="register">daftar</string>
+    <string name="hint_name">masukan nama anda</string>
+    <string name="invalid_email">Format email tidak valid</string>
+    <string name="invalid_password"><![CDATA[katasandi harus >= 6 karakter]]></string>
+    <string name="information_title">Informasi</string>
+    <string name="btn_continue">Lanjutkan</string>
+    <string name="error_field">Isi semua teks field</string>
+    <string name="login_success">Login Berhasil</string>
+    <string name="login_failed">Login Gagal</string>
+    <string name="menu_setting">pengaturan</string>
+    <string name="Descriptions">Deskripsi :</string>
+    <string name="gallery">galeri</string>
+    <string name="camera">kamera</string>
+    <string name="upload">unggah</string>
+</resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.main.MainActivity">
 
 <!--    <ImageView-->
 <!--        android:id="@+id/iv_setting"-->
@@ -26,20 +26,6 @@
         app:layout_constraintGuide_percent="0.44"
         app:layout_constraintStart_toStartOf="parent" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/copyrightTextView"-->
-<!--        style="@style/TextViewRegular"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="32dp"-->
-<!--        android:layout_marginEnd="32dp"-->
-<!--        android:layout_marginBottom="8dp"-->
-<!--        android:text="@string/by_vinna"-->
-<!--        android:textSize="14sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="0dp"
@@ -56,19 +42,6 @@
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal3"
         tools:text="Wellcome My App" />
 
-    <Button
-        android:id="@+id/btn_logOut"
-
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_lis_story" />
 
 <!--    <ImageView-->
 <!--        android:id="@+id/imageView"-->
@@ -90,7 +63,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/continue_"
+        android:text="@string/btn_continue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messageTextView" />

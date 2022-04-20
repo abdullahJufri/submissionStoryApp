@@ -13,6 +13,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
     </style>
 
     <style name="Theme.SubmissionStoryApp.NoActionBar">
@@ -26,6 +27,8 @@
         <item name="android:textSize">16sp</item>
 <!--        <item name="android:fontFamily">@font/bold</item>-->
     </style>
+
+
 
     <style name="Theme.SubmissionStoryApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

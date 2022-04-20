@@ -2,18 +2,18 @@ package com.bangkit.submissionstoryapp.ui.login
 
 import android.content.ContentValues
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.bangkit.submissionstoryapp.data.remote.api.ApiConfig
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.data.remote.model.LoginResponse
 import com.bangkit.submissionstoryapp.data.remote.model.LoginResult
 import com.bangkit.submissionstoryapp.ui.UserPreference
+import com.bangkit.submissionstoryapp.ui.register.RegisterViewmodels
 import com.bangkit.submissionstoryapp.utils.ApiCallbackString
 
 import kotlinx.coroutines.launch
+import org.json.JSONObject
+import org.json.JSONTokener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,8 +40,6 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
                 _isLoading.value = false
                 val responseBody = response.body()
                 if (response.isSuccessful) {
-//              _user.value = response.body()?.loginResult
-
                     callback.onResponse(response.body() != null, SUCCESS)
 
                     val model = Authentication(
@@ -56,20 +54,26 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
 
 
                 } else {
-                    Log.e("AuthenticationViewModel", "onResponse fail: ")
-//                    _message.value = Event(response.message())
-//                    _error.value = Event(true)
+                    Log.e(TAG, "onFailure1: ${response.message()}")
+                    val jsonObject = JSONTokener(response.errorBody()!!.string()).nextValue() as JSONObject
+                    val message = jsonObject.getString("message")
+                    callback.onResponse(false, message)
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 _isLoading.value = false
-                Log.e(ContentValues.TAG, "onFailure: ${t.message.toString()}")
+                Log.e(TAG, "onFailure2: ${t.message}")
+                callback.onResponse(false, t.message.toString())
             }
 
         })
     }
 
+    @JvmName("getUser1")
+    fun getUser(): LiveData<Authentication> {
+        return pref.getUser().asLiveData()
+    }
     fun saveUser(authentication: com.bangkit.submissionstoryapp.data.remote.model.Authentication) {
         viewModelScope.launch {
             pref.saveUser(authentication)
@@ -77,7 +81,7 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
     }
 
     companion object {
-        private const val TAG = "SignInViewModel"
+        private const val TAG = "loginViewmodel"
         private const val SUCCESS = "success"
     }
 

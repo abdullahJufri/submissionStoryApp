@@ -22,13 +22,13 @@
 
     <com.bangkit.submissionstoryapp.ui.customeview.MyEditTextEmail
         android:id="@+id/my_email"
-        android:layout_width="369dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="masukan email"
+        android:hint="@string/hint_email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="masukan password"
+        android:hint="@string/hint_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,14 +54,14 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="login"
+        android:text="@string/login"
         app:layout_constraintEnd_toStartOf="@+id/btn_register"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_password" />
 
     <Button
         android:id="@+id/btn_register"
-        android:text="register"
+        android:text="@string/register"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

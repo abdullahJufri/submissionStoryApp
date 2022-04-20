@@ -1,30 +1,38 @@
 <resources>
     <string name="app_name">submissionStoryApp</string>
-    <string name="fill_field">tes</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="title_activity_login">LoginActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="logout">logout</string>
-    <string name="continue_">continue</string>
+    <string name="menu_logout">logout</string>
     <string name="greeting">Hi %1$s</string>
-    <string name="information">tesd</string>
-    <string name="sign_in_success">sukse</string>
-    <string name="sign_in_failed">gagal</string>
     <string name="detail_story">detail</string>
     <string name="name">name</string>
     <string name="invalid_permission">Can\'t get permission</string>
-    <string name="upload_success">sukses</string>
-    <string name="upload_failed">failed</string>
-    <string name="register_success">sukses</string>
-    <string name="register_failed">failed</string>
+    <string name="upload_success">Upload Success</string>
+    <string name="upload_failed">Upload Failed</string>
+    <string name="register_success">Register Success</string>
+    <string name="register_failed">Register Failed</string>
     <string name="upload_fail">failed</string>
-    <string name="log_out_success">sukses</string>
+    <string name="log_out_success">Log Out Success</string>
+    <string name="hint_email">Insert your email</string>
+    <string name="hint_password">Insert your password</string>
+    <string name="login">login</string>
+    <string name="register">register</string>
+    <string name="hint_name">Insert your name</string>
+    <string name="invalid_email">Invalid format email</string>
+    <string name="invalid_password"><![CDATA[Password must be >= 6 characters]]></string>
+    <string name="information_title">Information</string>
+    <string name="btn_continue">Continue</string>
+    <string name="error_field">Fill in all text fields</string>
+    <string name="login_success">Login Success</string>
+    <string name="login_failed">Login Failed</string>
+    <string name="menu_setting">Setting</string>
+    <string name="Descriptions">Descriptions :</string>
+    <string name="gallery">gallery</string>
+    <string name="camera">camera</string>
+    <string name="upload">upload</string>
+
+
 </resources>
