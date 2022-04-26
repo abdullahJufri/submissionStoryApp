@@ -45,8 +45,8 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     class ViewHolder(private var binding: ItemRowStoriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val imgImage: ImageView = binding.imgItemImage
-        val tvName: TextView = binding.tvItemName
+       private val imgImage: ImageView = binding.imgItemImage
+        private val tvName: TextView = binding.tvItemName
         fun bind(story: ListStoryItem) {
 
             with(binding) {

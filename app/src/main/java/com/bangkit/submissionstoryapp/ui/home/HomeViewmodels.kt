@@ -20,7 +20,6 @@ class HomeViewmodels : ViewModel() {
     val isLoading: LiveData<Boolean> = _isLoading
 
     private val _isHaveData = MutableLiveData<Boolean>()
-    val isHaveData: LiveData<Boolean> = _isHaveData
 
 
     fun showListStory(token: String) {

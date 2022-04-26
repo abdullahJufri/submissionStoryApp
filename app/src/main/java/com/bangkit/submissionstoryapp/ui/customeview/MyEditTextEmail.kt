@@ -42,7 +42,7 @@ class MyEditTextEmail : AppCompatEditText, View.OnTouchListener {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (s.toString().isNotEmpty()) showClearButton() else hideClearButton()
                 if (!isValidEmail(s)) {
-                    UnvalidEmail()
+                    unvalidEmail()
 
                 }
             }
@@ -54,7 +54,7 @@ class MyEditTextEmail : AppCompatEditText, View.OnTouchListener {
     private fun isValidEmail(email: CharSequence): Boolean {
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
-    private fun UnvalidEmail(){
+    private fun unvalidEmail(){
         error = context.getString(R.string.invalid_email)
     }
     private fun showClearButton() {

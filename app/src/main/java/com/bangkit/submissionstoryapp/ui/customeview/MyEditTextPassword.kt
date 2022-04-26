@@ -3,12 +3,11 @@ package com.bangkit.submissionstoryapp.ui.customeview
 import android.content.Context
 import android.graphics.Canvas
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.AttributeSet
-import android.util.Patterns
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.widget.doOnTextChanged
 import com.bangkit.submissionstoryapp.R
 
 class MyEditTextPassword: AppCompatEditText {
@@ -30,18 +29,11 @@ class MyEditTextPassword: AppCompatEditText {
 
     private fun init(){
 
-        addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                // Do nothing.
-            }
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+        doOnTextChanged { s, start, before, count ->
+            if (s != null) {
                 isUnvalidPassword(s)
-
             }
-            override fun afterTextChanged(s: Editable) {
-                // Do nothing.
-            }
-        })
+        }
     }
 
 

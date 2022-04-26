@@ -3,18 +3,12 @@
 
     <string name="title_activity_login">LoginActivity</string>
 
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
     <string name="menu_logout">logout</string>
     <string name="greeting">Hi %1$s</string>
-    <string name="detail_story">detail</string>
     <string name="name">name</string>
     <string name="invalid_permission">Can\'t get permission</string>
     <string name="upload_success">Upload Success</string>
     <string name="upload_failed">Upload Failed</string>
-    <string name="register_success">Register Success</string>
-    <string name="register_failed">Register Failed</string>
-    <string name="upload_fail">failed</string>
     <string name="log_out_success">Log Out Success</string>
     <string name="hint_email">Insert your email</string>
     <string name="hint_password">Insert your password</string>
@@ -26,8 +20,6 @@
     <string name="information_title">Information</string>
     <string name="btn_continue">Continue</string>
     <string name="error_field">Fill in all text fields</string>
-    <string name="login_success">Login Success</string>
-    <string name="login_failed">Login Failed</string>
     <string name="menu_setting">Setting</string>
     <string name="Descriptions">Descriptions :</string>
     <string name="gallery">gallery</string>

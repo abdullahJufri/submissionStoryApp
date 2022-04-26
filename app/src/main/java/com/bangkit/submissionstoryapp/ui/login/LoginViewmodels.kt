@@ -23,7 +23,6 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
     val error: LiveData<String> = _error
 
     private var _user = MutableLiveData<LoginResult>()
-    val user: LiveData<LoginResult> = _user
 
     fun login(email: String, password: String, callback: ApiCallbackString) {
         _isLoading.value = true
@@ -66,11 +65,6 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
             }
 
         })
-    }
-
-    @JvmName("getUser1")
-    fun getUser(): LiveData<Authentication> {
-        return pref.getUser().asLiveData()
     }
 
     fun saveUser(authentication: Authentication) {

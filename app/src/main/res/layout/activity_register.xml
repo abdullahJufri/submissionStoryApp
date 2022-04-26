@@ -30,7 +30,8 @@
         android:hint="@string/hint_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="text" />
 
     <com.bangkit.submissionstoryapp.ui.customeview.MyEditTextEmail
         android:id="@+id/myEditTextEmail"
