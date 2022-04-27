@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -19,6 +20,8 @@ import com.bangkit.submissionstoryapp.R
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.databinding.ActivityAddStoryBinding
 import com.bangkit.submissionstoryapp.utils.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -31,8 +34,27 @@ class AddStoryActivity : AppCompatActivity() {
     private lateinit var user: Authentication
     private var getFile: File? = null
     private var result: Bitmap? = null
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var location: Location
 
     private val viewModel by viewModels<AddStoryViewmodels>()
+
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permissions ->
+            when {
+                permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
+                    getMyLastLocation()
+                }
+                permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
+                    getMyLastLocation()
+                }
+                else -> {
+                }
+            }
+        }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -69,7 +91,8 @@ class AddStoryActivity : AppCompatActivity() {
         binding.btnCameraX.setOnClickListener { startCameraX() }
         binding.btnGallery.setOnClickListener { startGallery() }
         binding.btnUpload.setOnClickListener { uploadImage() }
-
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        getMyLastLocation()
         showLoading()
     }
 
@@ -138,6 +161,8 @@ class AddStoryActivity : AppCompatActivity() {
             val file = reduceFileImage(getFile as File)
 
             val description = binding.etDescription.text.toString()
+            val lat = location.latitude.toFloat()
+            val long = location.longitude.toFloat()
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart = MultipartBody.Part.createFormData(
                 "photo",
@@ -146,7 +171,7 @@ class AddStoryActivity : AppCompatActivity() {
             )
 
             // upload image
-            viewModel.uploadImage(user, description, imageMultipart, object : ApiCallbackString {
+            viewModel.uploadImage(user, description, imageMultipart,lat,long, object : ApiCallbackString {
                 override fun onResponse(success: Boolean, message: String) {
                     showAlertDialog(success, message)
                 }
@@ -178,6 +203,38 @@ class AddStoryActivity : AppCompatActivity() {
                 create()
                 show()
             }
+        }
+    }
+
+    private fun checkPermission(permission: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun getMyLastLocation() {
+        if (checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
+            checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+        ){
+            fusedLocationClient.lastLocation.addOnSuccessListener { locs: Location? ->
+                if (locs != null) {
+                    location = locs
+                } else {
+                    Toast.makeText(
+                        this@AddStoryActivity,
+                        "Location is not found. Try Again",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        } else {
+            requestPermissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
         }
     }
 

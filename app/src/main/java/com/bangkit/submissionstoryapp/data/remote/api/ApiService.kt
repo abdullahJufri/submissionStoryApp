@@ -18,14 +18,16 @@ interface ApiService {
     @GET("stories")
     fun getUserStories(
         @Header("Authorization") token: String
-    ) : Call<StoriesResponse>
+    ): Call<StoriesResponse>
 
     @Multipart
     @POST("stories")
     fun addStories(
         @Header("Authorization") token: String,
-        @Part ("description") des: String,
-        @Part file: MultipartBody.Part
+        @Part("description") des: String,
+        @Part file: MultipartBody.Part,
+        @Part("lat") lat: Float,
+        @Part("lon") lon: Float
     ): Call<InfoResponse>
 
     @FormUrlEncoded
@@ -50,7 +52,6 @@ interface ApiService {
     suspend fun getStoriesLocation(
         @Header("Authorization") token: String
     ): StoriesResponse
-
 
 
 }

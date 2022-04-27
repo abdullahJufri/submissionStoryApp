@@ -24,11 +24,13 @@ class AddStoryViewmodels : ViewModel() {
         user: Authentication,
         description: String,
         imageMultipart: MultipartBody.Part,
+        lat: Float,
+        lon: Float,
         callback: ApiCallbackString
     ) {
         _isLoading.value = true
         val client = ApiConfig().getApiService()
-            .addStories("Bearer ${user.token}", description, imageMultipart)
+            .addStories("Bearer ${user.token}", description, imageMultipart, lat, lon)
         client.enqueue(object : Callback<InfoResponse> {
             override fun onResponse(
                 call: Call<InfoResponse>,
