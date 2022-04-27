@@ -25,7 +25,7 @@ abstract class StoryDatabase : RoomDatabase() {
             return INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
-                    StoryDatabase::class.java, "story_database"
+                    StoryDatabase::class.java, "list_story_db"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

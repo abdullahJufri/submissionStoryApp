@@ -20,7 +20,7 @@ data class StoriesResponse(
     val message: String
 ) : Parcelable
 
-@Entity(tableName = "story")
+@Entity(tableName = "storiesTable")
 @Parcelize
 data class ListStoryItem(
     @PrimaryKey

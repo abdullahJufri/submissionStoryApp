@@ -57,7 +57,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.addstory.CameraActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.home.HomeActivity"/>
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="false"
@@ -81,6 +82,9 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.home.HomeActivity" />
         </provider>
     </application>
 

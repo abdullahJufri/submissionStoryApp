@@ -15,7 +15,6 @@ import com.bangkit.submissionstoryapp.data.local.UserPreference
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.databinding.ActivityMapsBinding
 import com.bangkit.submissionstoryapp.ui.ViewModelFactory
-import com.bangkit.submissionstoryapp.ui.main.MainViewmodels
 import com.bangkit.submissionstoryapp.ui.main.dataStore
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -65,11 +64,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isCompassEnabled = true
         mMap.uiSettings.isMapToolbarEnabled = true
 
-//        mapsViewModel = ViewModelProvider(
-//            this,
-//            ViewModelFactory(UserPreference.getInstance(dataStore), this)
-//        )[MapsViewmodels::class.java]
-//
         mapsViewModel.getUser().observe(this) {
             authentication = Authentication(
                 it.name,
@@ -82,16 +76,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             mapsViewModel.getLocation(it.token)
 
         }
-//        mapsViewModel.getLocation(authentication.token)
-
-//        mapsViewModel.getToken().observe(
-//            this
-//        ) { token: String ->
-//            if (token.isNotEmpty()) {
-//                mapsViewModel.getLocation(token)
-//            }
-//        }
-
         mapsViewModel.listStory.observe(this) {
             for (story in it) {
                 if (story.lat != null && story.lon != null) {
@@ -126,7 +110,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun setMapStyle() {
         try {
-            val success = mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style))
+            val success =
+                mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style))
             if (!success) {
                 Log.e(ContentValues.TAG, "Style Parsing Failed.")
             }

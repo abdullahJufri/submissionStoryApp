@@ -22,8 +22,6 @@ class LoginViewmodels(private val pref: UserPreference) : ViewModel() {
     private var _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
 
-    private var _user = MutableLiveData<LoginResult>()
-
     fun login(email: String, password: String, callback: ApiCallbackString) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().login(email, password)

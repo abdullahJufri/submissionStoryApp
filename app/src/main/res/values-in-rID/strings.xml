@@ -27,4 +27,7 @@
     <string name="camera">kamera</string>
     <string name="upload">unggah</string>
     <string name="error_file">file tidak ditemukan</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="retry">coba lagi</string>
+    <string name="Map">Peta</string>
 </resources>

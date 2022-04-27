@@ -1,9 +1,6 @@
 package com.bangkit.submissionstoryapp.ui.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
@@ -13,6 +10,8 @@ import com.bangkit.submissionstoryapp.data.remote.model.ListStoryItem
 import kotlinx.coroutines.launch
 
 class MainViewmodels(private val pref: UserPreference, private val storyRepository: StoryRepository) : ViewModel()  {
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun getUser(): LiveData<Authentication> {
         return pref.getUser().asLiveData()

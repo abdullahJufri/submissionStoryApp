@@ -15,7 +15,6 @@ import com.bangkit.submissionstoryapp.R
 import com.bangkit.submissionstoryapp.data.remote.model.ListStoryItem
 import com.bangkit.submissionstoryapp.databinding.ItemRowStoriesBinding
 import com.bangkit.submissionstoryapp.ui.detail.DetailStoryActivity
-import com.bangkit.submissionstoryapp.utils.DiffCallback
 import com.bumptech.glide.Glide
 
 class HomeAdapter : PagingDataAdapter<ListStoryItem, HomeAdapter.ViewHolder>(
@@ -30,25 +29,23 @@ class HomeAdapter : PagingDataAdapter<ListStoryItem, HomeAdapter.ViewHolder>(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position) as ListStoryItem)
+        holder.bind(getItem(position))
 
     }
 
-//    override fun getItemCount() = listStory.size
 
     class ViewHolder(private var binding: ItemRowStoriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
        private val imgImage: ImageView = binding.imgItemImage
         private val tvName: TextView = binding.tvItemName
-        fun bind(story: ListStoryItem) {
-
+        fun bind(story: ListStoryItem?) {
             with(binding) {
                 Glide.with(imgItemImage)
-                    .load(story.photoUrl) // URL Avatar
+                    .load(story?.photoUrl) // URL Avatar
                     .placeholder(R.drawable.ic_baseline_image_gray)
                     .error(R.drawable.ic_baseline_broken_image_gray)
                     .into(imgItemImage)
-                tvItemName.text = story.name
+                tvItemName.text = story?.name
                 itemView.setOnClickListener {
                     val optionsCompat: ActivityOptionsCompat =
                         ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -60,7 +57,6 @@ class HomeAdapter : PagingDataAdapter<ListStoryItem, HomeAdapter.ViewHolder>(
                     intent.putExtra(DetailStoryActivity.EXTRA_STORY, story)
                     itemView.context.startActivity(intent, optionsCompat.toBundle())
                 }
-
 
             }
         }

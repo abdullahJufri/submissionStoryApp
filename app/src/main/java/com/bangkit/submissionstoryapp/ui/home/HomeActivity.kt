@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
@@ -15,9 +14,9 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.submissionstoryapp.R
+import com.bangkit.submissionstoryapp.data.local.UserPreference
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.databinding.ActivityHomeBinding
-import com.bangkit.submissionstoryapp.data.local.UserPreference
 import com.bangkit.submissionstoryapp.ui.ViewModelFactory
 import com.bangkit.submissionstoryapp.ui.addstory.AddStoryActivity
 import com.bangkit.submissionstoryapp.ui.login.LoginActivity
@@ -32,7 +31,6 @@ class HomeActivity : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityHomeBinding
-    private val viewmodel by viewModels<HomeViewmodels>()
     private lateinit var mainViewmodels: MainViewmodels
 
 
@@ -46,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
         setupViewModel()
 
 
-        viewmodel.isLoading.observe(this) {
+        mainViewmodels.isLoading.observe(this) {
             showLoading(it, binding.progressBar)
         }
 
@@ -63,17 +61,12 @@ class HomeActivity : AppCompatActivity() {
                 adapter.retry()
             }
         )
-//        binding.rvStories.setHasFixedSize(true)
-
-
-//        binding.rvStories.adapter = adapter
-
     }
 
     private fun setupViewModel() {
         mainViewmodels = ViewModelProvider(
             this,
-            ViewModelFactory(UserPreference.getInstance(dataStore),this)
+            ViewModelFactory(UserPreference.getInstance(dataStore), this)
         )[MainViewmodels::class.java]
 
     }
@@ -93,8 +86,8 @@ class HomeActivity : AppCompatActivity() {
         when (item.itemId) {
 
             R.id.menu_map -> {
-                val i = Intent(this, MapsActivity::class.java)
-                startActivity(i)
+                val intent = Intent(this, MapsActivity::class.java)
+                startActivity(intent)
                 return true
             }
             R.id.menu_language -> {
@@ -122,10 +115,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setListStory() {
-//        viewmodel.showListStory(authentication.token)
-//        viewmodel.itemStory.observe(this) {
-//            adapter.setListStory(it)
-//        }
         mainViewmodels.getStories(authentication.token).observe(this) {
             adapter.submitData(lifecycle, it)
         }

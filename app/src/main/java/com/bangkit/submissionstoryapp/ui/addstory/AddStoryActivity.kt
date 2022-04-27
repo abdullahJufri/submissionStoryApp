@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat
 import com.bangkit.submissionstoryapp.R
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.databinding.ActivityAddStoryBinding
+import com.bangkit.submissionstoryapp.ui.home.HomeActivity
 import com.bangkit.submissionstoryapp.utils.*
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -83,6 +84,12 @@ class AddStoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddStoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val actionbar = supportActionBar
+
+        actionbar?.setDisplayHomeAsUpEnabled(true)
+
+
 
         user = intent.getParcelableExtra(EXTRA_USER)!!
 
@@ -183,11 +190,14 @@ class AddStoryActivity : AppCompatActivity() {
     }
 
     private fun showAlertDialog(param: Boolean, message: String) {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra(HomeActivity.EXTRA_USER, user)
         if (param) {
             AlertDialog.Builder(this).apply {
                 setTitle(getString(R.string.information_title))
                 setMessage(getString(R.string.upload_success))
                 setPositiveButton(getString(R.string.btn_continue)) { _, _ ->
+                    startActivity(intent)
                     finish()
                 }
                 create()

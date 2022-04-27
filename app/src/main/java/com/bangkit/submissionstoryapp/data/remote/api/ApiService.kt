@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.bangkit.submissionstoryapp.data.remote.api
 
 import com.bangkit.submissionstoryapp.data.remote.model.InfoResponse
@@ -14,11 +16,6 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String,
     ): Call<LoginResponse>
-
-    @GET("stories")
-    fun getUserStories(
-        @Header("Authorization") token: String
-    ): Call<StoriesResponse>
 
     @Multipart
     @POST("stories")

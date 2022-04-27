@@ -7,18 +7,13 @@ import com.bangkit.submissionstoryapp.data.remote.model.Authentication
 import com.bangkit.submissionstoryapp.data.remote.model.ListStoryItem
 import kotlinx.coroutines.launch
 
-class MapsViewmodels(private val pref: UserPreference, private val storyRepository: StoryRepository) : ViewModel() {
+class MapsViewmodels(
+    private val pref: UserPreference,
+    private val storyRepository: StoryRepository
+) : ViewModel() {
     private val _listStory = MutableLiveData<List<ListStoryItem>>()
-    var listStory : LiveData<List<ListStoryItem>> = _listStory
+    var listStory: LiveData<List<ListStoryItem>> = _listStory
 
-//    fun getToken(): LiveData<Authentication> {
-//        return pref.getUser().asLiveData()
-//    }
-
-
-    fun getToken(): LiveData<String> {
-        return pref.getToken().asLiveData()
-    }
     fun getUser(): LiveData<Authentication> {
         return pref.getUser().asLiveData()
     }

@@ -27,6 +27,8 @@
     <string name="upload">upload</string>
     <string name="error_file">file not found</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="retry">retry</string>
+    <string name="Map">Map</string>
 
 
 </resources>
