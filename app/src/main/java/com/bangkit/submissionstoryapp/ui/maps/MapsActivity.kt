@@ -104,7 +104,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     )
                 }
             }
-            val firstLocation = LatLng(it[0].lat, it[0].lon)
+            val firstLocation = LatLng(it[0].lat as Double, it[0].lon as Double)
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(firstLocation, 15f))
         }
 

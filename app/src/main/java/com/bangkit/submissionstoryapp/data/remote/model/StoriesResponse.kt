@@ -11,7 +11,7 @@ import kotlinx.parcelize.Parcelize
 data class StoriesResponse(
 
     @field:SerializedName("listStory")
-    val listStory: List<ListStoryItem>,
+    val listStory: List<ListStoryItem?>? = null,
 
     @field:SerializedName("error")
     val error: Boolean,
@@ -23,26 +23,25 @@ data class StoriesResponse(
 @Entity(tableName = "story")
 @Parcelize
 data class ListStoryItem(
-
-    @field:SerializedName("photoUrl")
-    val photoUrl: String,
-
-    @field:SerializedName("createdAt")
-    val createdAt: String,
-
-    @field:SerializedName("name")
-    val name: String,
-
-    @field:SerializedName("description")
-    val description: String,
-
     @PrimaryKey
     @field:SerializedName("id")
     val id: String,
 
+    @field:SerializedName("photoUrl")
+    val photoUrl: String? = null,
+
+    @field:SerializedName("createdAt")
+    val createdAt: String? = null,
+
+    @field:SerializedName("name")
+    val name: String? = null,
+
+    @field:SerializedName("description")
+    val description: String? = null,
+
     @field:SerializedName("lon")
-    val lon: Double,
+    val lon: Double? = null,
 
     @field:SerializedName("lat")
-    val lat: Double
+    val lat: Double? = null
 ) : Parcelable

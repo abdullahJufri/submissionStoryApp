@@ -21,16 +21,7 @@ import com.bumptech.glide.Glide
 class HomeAdapter : PagingDataAdapter<ListStoryItem, HomeAdapter.ViewHolder>(
     DIFF_CALLBACK) {
 
-    private val listStory = ArrayList<ListStoryItem>()
 
-    fun setListStory(itemStory: List<ListStoryItem>) {
-        val diffCallback = DiffCallback(this.listStory, itemStory)
-        val diffResult = DiffUtil.calculateDiff(diffCallback)
-
-        this.listStory.clear()
-        this.listStory.addAll(itemStory)
-        diffResult.dispatchUpdatesTo(this)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -43,7 +34,7 @@ class HomeAdapter : PagingDataAdapter<ListStoryItem, HomeAdapter.ViewHolder>(
 
     }
 
-    override fun getItemCount() = listStory.size
+//    override fun getItemCount() = listStory.size
 
     class ViewHolder(private var binding: ItemRowStoriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -77,7 +68,6 @@ class HomeAdapter : PagingDataAdapter<ListStoryItem, HomeAdapter.ViewHolder>(
     }
 
     companion object {
-        const val STORIES = "stories"
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
             override fun areItemsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
                 return oldItem == newItem

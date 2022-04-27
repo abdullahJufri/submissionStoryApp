@@ -23,6 +23,6 @@ class StoryRepository (private val storyDatabase: StoryDatabase, private val api
 
     @Suppress("UNCHECKED_CAST")
     suspend fun getLocation(token: String): List<ListStoryItem> {
-        return apiService.getStoriesLocation("bearer $token").listStory
+        return apiService.getStoriesLocation("bearer $token").listStory as List<ListStoryItem>
     }
 }

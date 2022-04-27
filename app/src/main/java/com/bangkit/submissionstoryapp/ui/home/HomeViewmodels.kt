@@ -31,39 +31,39 @@ class HomeViewmodels : ViewModel() {
 
 //    fun getStories(token: String): LiveData<PagingData<ListStoryItem>> = storyRepository.getStory(token).cachedIn(viewModelScope)
 
-    fun showListStory(token: String) {
-        _isLoading.value = true
-        _isHaveData.value = true
-        val client = ApiConfig
-            .getApiService()
-            .getUserStories("Bearer $token")
-
-        client.enqueue(object : Callback<StoriesResponse> {
-            override fun onResponse(
-                call: Call<StoriesResponse>,
-                response: Response<StoriesResponse>
-            ) {
-                _isLoading.value = false
-                if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        if (!responseBody.error) {
-                            _itemStory.value = response.body()?.listStory
-                            _isHaveData.value =
-                                responseBody.message == "Stories fetched successfully"
-                        }
-                    }
-                } else {
-                    Log.e(TAG, "onFailure: ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<StoriesResponse>, t: Throwable) {
-                _isLoading.value = false
-                Log.e(TAG, "onFailure: ${t.message}")
-            }
-        })
-    }
+//    fun showListStory(token: String) {
+//        _isLoading.value = true
+//        _isHaveData.value = true
+//        val client = ApiConfig
+//            .getApiService()
+//            .getUserStories("Bearer $token")
+//
+//        client.enqueue(object : Callback<StoriesResponse> {
+//            override fun onResponse(
+//                call: Call<StoriesResponse>,
+//                response: Response<StoriesResponse>
+//            ) {
+//                _isLoading.value = false
+//                if (response.isSuccessful) {
+//                    val responseBody = response.body()
+//                    if (responseBody != null) {
+//                        if (!responseBody.error) {
+//                            _itemStory.value = response.body()?.listStory
+//                            _isHaveData.value =
+//                                responseBody.message == "Stories fetched successfully"
+//                        }
+//                    }
+//                } else {
+//                    Log.e(TAG, "onFailure: ${response.message()}")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<StoriesResponse>, t: Throwable) {
+//                _isLoading.value = false
+//                Log.e(TAG, "onFailure: ${t.message}")
+//            }
+//        })
+//    }
 
 
     companion object {

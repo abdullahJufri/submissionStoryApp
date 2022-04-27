@@ -63,7 +63,7 @@ class HomeActivity : AppCompatActivity() {
                 adapter.retry()
             }
         )
-        binding.rvStories.setHasFixedSize(true)
+//        binding.rvStories.setHasFixedSize(true)
 
 
 //        binding.rvStories.adapter = adapter
