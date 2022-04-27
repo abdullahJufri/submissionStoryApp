@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.submissionstoryapp.R
@@ -17,7 +18,8 @@ import com.bangkit.submissionstoryapp.ui.detail.DetailStoryActivity
 import com.bangkit.submissionstoryapp.utils.DiffCallback
 import com.bumptech.glide.Glide
 
-class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class HomeAdapter : PagingDataAdapter<ListStoryItem, HomeAdapter.ViewHolder>(
+    DIFF_CALLBACK) {
 
     private val listStory = ArrayList<ListStoryItem>()
 
@@ -37,7 +39,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listStory[position])
+        holder.bind(getItem(position) as ListStoryItem)
 
     }
 
@@ -72,5 +74,17 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
             }
         }
 
+    }
+
+    companion object {
+        const val STORIES = "stories"
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
+            override fun areItemsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
+                return oldItem == newItem
+            }
+            override fun areContentsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
+                return oldItem.id == newItem.id
+            }
+        }
     }
 }

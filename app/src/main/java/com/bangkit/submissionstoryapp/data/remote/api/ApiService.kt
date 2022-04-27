@@ -35,4 +35,23 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") pass: String
     ): Call<InfoResponse>
+
+
+    @GET("stories")
+    suspend fun getAllStories(
+        @Header("Authorization") token: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int,
+        @Query("location") location: Int
+    ): StoriesResponse
+
+
+    @GET("stories?location=1")
+    suspend fun getStoriesLocation(
+        @Header("Authorization") token: String
+    ): StoriesResponse
+
+
+
 }
+

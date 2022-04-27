@@ -4,6 +4,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.bangkit.submissionstoryapp.data.local.story.StoryRepository
 import com.bangkit.submissionstoryapp.data.remote.api.ApiConfig
 import com.bangkit.submissionstoryapp.data.remote.model.ListStoryItem
 import com.bangkit.submissionstoryapp.data.remote.model.StoriesResponse
@@ -21,6 +25,11 @@ class HomeViewmodels : ViewModel() {
 
     private val _isHaveData = MutableLiveData<Boolean>()
 
+
+
+
+
+//    fun getStories(token: String): LiveData<PagingData<ListStoryItem>> = storyRepository.getStory(token).cachedIn(viewModelScope)
 
     fun showListStory(token: String) {
         _isLoading.value = true

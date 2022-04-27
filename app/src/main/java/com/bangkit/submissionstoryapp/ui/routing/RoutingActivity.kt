@@ -27,7 +27,7 @@ class RoutingActivity : AppCompatActivity() {
     private fun setupViewModel() {
         mainViewModel = ViewModelProvider(
             this,
-            ViewModelFactory(UserPreference.getInstance(dataStore))
+            ViewModelFactory(UserPreference.getInstance(dataStore), this)
         )[MainViewmodels::class.java]
 
         mainViewModel.getUser().observe(this) {

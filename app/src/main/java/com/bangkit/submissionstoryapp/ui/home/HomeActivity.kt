@@ -41,28 +41,38 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        authentication = intent.getParcelableExtra(EXTRA_USER)!!
         setupViewModel()
+
 
         viewmodel.isLoading.observe(this) {
             showLoading(it, binding.progressBar)
         }
 
-        authentication = intent.getParcelableExtra(EXTRA_USER)!!
+
 
         setListStory()
         adapter = HomeAdapter()
         addStoryAction()
 
         binding.rvStories.layoutManager = LinearLayoutManager(this)
+
+        binding.rvStories.adapter = adapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                adapter.retry()
+            }
+        )
         binding.rvStories.setHasFixedSize(true)
-        binding.rvStories.adapter = adapter
+
+
+//        binding.rvStories.adapter = adapter
 
     }
 
     private fun setupViewModel() {
         mainViewmodels = ViewModelProvider(
             this,
-            ViewModelFactory(UserPreference.getInstance(dataStore))
+            ViewModelFactory(UserPreference.getInstance(dataStore),this)
         )[MainViewmodels::class.java]
 
     }
@@ -105,9 +115,12 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setListStory() {
-        viewmodel.showListStory(authentication.token)
-        viewmodel.itemStory.observe(this) {
-            adapter.setListStory(it)
+//        viewmodel.showListStory(authentication.token)
+//        viewmodel.itemStory.observe(this) {
+//            adapter.setListStory(it)
+//        }
+        mainViewmodels.getStories(authentication.token).observe(this) {
+            adapter.submitData(lifecycle, it)
         }
     }
 
