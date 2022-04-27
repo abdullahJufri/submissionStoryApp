@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         setupViewModel()
         buttonListener()
+        
     }
 
     private fun setupViewModel() {
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             val moveToListStoryActivity = Intent(this@MainActivity, HomeActivity::class.java)
             moveToListStoryActivity.putExtra(HomeActivity.EXTRA_USER, authentication)
             startActivity(moveToListStoryActivity)
+            finish()
         }
 
     }
