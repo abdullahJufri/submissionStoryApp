@@ -12,6 +12,7 @@
         <entry key="..\:/kuliah/Bangkit/intermediate/submissionStoryApp/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/kuliah/Bangkit/intermediate/submissionStoryApp/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/kuliah/Bangkit/intermediate/submissionStoryApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/kuliah/Bangkit/intermediate/submissionStoryApp/app/src/main/res/layout/activity_maps.xml" value="0.3625" />
         <entry key="..\:/kuliah/Bangkit/intermediate/submissionStoryApp/app/src/main/res/layout/activity_register.xml" value="0.1762917933130699" />
         <entry key="..\:/kuliah/Bangkit/intermediate/submissionStoryApp/app/src/main/res/layout/activity_routing.xml" value="0.18541666666666667" />
         <entry key="..\:/kuliah/Bangkit/intermediate/submissionStoryApp/app/src/main/res/layout/content_login.xml" value="0.1762917933130699" />
@@ -25,7 +26,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

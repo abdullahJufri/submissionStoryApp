@@ -12,6 +12,11 @@ import kotlinx.coroutines.flow.map
 
 
 class UserPreference private constructor(private val dataStore: DataStore<Preferences>) {
+    private val key = stringPreferencesKey("user_token")
+    fun getToken(): Flow<String> {
+        return dataStore.data.map { preferences ->
+            preferences[key] ?: ""
+        }}
 
     fun getUser(): Flow<Authentication> {
         return dataStore.data.map {

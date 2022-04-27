@@ -7,6 +7,7 @@ import com.bangkit.submissionstoryapp.data.local.UserPreference
 import com.bangkit.submissionstoryapp.data.local.di.Injection
 import com.bangkit.submissionstoryapp.ui.login.LoginViewmodels
 import com.bangkit.submissionstoryapp.ui.main.MainViewmodels
+import com.bangkit.submissionstoryapp.ui.maps.MapsViewmodels
 
 
 class ViewModelFactory(private val pref: UserPreference,  private val context: Context) : ViewModelProvider.NewInstanceFactory() {
@@ -24,9 +25,9 @@ class ViewModelFactory(private val pref: UserPreference,  private val context: C
             modelClass.isAssignableFrom(MainViewmodels::class.java) -> {
                 MainViewmodels(pref, Injection.provideRepository(context)) as T
             }
-//            modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
-//                MapsViewModel(pref, Injection.provideRepository(context)) as T
-//            }
+            modelClass.isAssignableFrom(MapsViewmodels::class.java) -> {
+                MapsViewmodels(pref, Injection.provideRepository(context)) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

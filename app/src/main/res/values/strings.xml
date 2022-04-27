@@ -26,6 +26,7 @@
     <string name="camera">camera</string>
     <string name="upload">upload</string>
     <string name="error_file">file not found</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 
 </resources>

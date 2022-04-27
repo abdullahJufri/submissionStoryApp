@@ -22,6 +22,7 @@ import com.bangkit.submissionstoryapp.ui.ViewModelFactory
 import com.bangkit.submissionstoryapp.ui.addstory.AddStoryActivity
 import com.bangkit.submissionstoryapp.ui.login.LoginActivity
 import com.bangkit.submissionstoryapp.ui.main.MainViewmodels
+import com.bangkit.submissionstoryapp.ui.maps.MapsActivity
 import com.bangkit.submissionstoryapp.utils.showLoading
 
 
@@ -90,6 +91,12 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+
+            R.id.menu_map -> {
+                val i = Intent(this, MapsActivity::class.java)
+                startActivity(i)
+                return true
+            }
             R.id.menu_language -> {
                 val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
                 startActivity(intent)
