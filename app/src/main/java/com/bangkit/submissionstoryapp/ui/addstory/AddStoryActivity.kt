@@ -14,7 +14,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bangkit.submissionstoryapp.R
 import com.bangkit.submissionstoryapp.data.remote.model.Authentication
@@ -93,12 +92,12 @@ class AddStoryActivity : AppCompatActivity() {
 
         user = intent.getParcelableExtra(EXTRA_USER)!!
 
-        getPermission()
 
         binding.btnCameraX.setOnClickListener { startCameraX() }
         binding.btnGallery.setOnClickListener { startGallery() }
         binding.btnUpload.setOnClickListener { uploadImage() }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        getPermission()
         getMyLastLocation()
         showLoading()
     }
@@ -106,11 +105,10 @@ class AddStoryActivity : AppCompatActivity() {
 
     private fun getPermission() {
         if (!allPermissionsGranted()) {
-            ActivityCompat.requestPermissions(
-                this,
-                REQUIRED_PERMISSIONS,
-                REQUEST_CODE_PERMISSIONS
+            requestPermissionLauncher.launch(
+                REQUIRED_PERMISSIONS
             )
+
         }
     }
 
@@ -178,11 +176,17 @@ class AddStoryActivity : AppCompatActivity() {
             )
 
             // upload image
-            viewModel.uploadImage(user, description, imageMultipart,lat,long, object : ApiCallbackString {
-                override fun onResponse(success: Boolean, message: String) {
-                    showAlertDialog(success, message)
-                }
-            })
+            viewModel.uploadImage(
+                user,
+                description,
+                imageMultipart,
+                lat,
+                long,
+                object : ApiCallbackString {
+                    override fun onResponse(success: Boolean, message: String) {
+                        showAlertDialog(success, message)
+                    }
+                })
 
         } else {
             showToast(this@AddStoryActivity, getString(R.string.error_file))
@@ -226,7 +230,7 @@ class AddStoryActivity : AppCompatActivity() {
     private fun getMyLastLocation() {
         if (checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
             checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
-        ){
+        ) {
             fusedLocationClient.lastLocation.addOnSuccessListener { locs: Location? ->
                 if (locs != null) {
                     location = locs
@@ -238,13 +242,6 @@ class AddStoryActivity : AppCompatActivity() {
                     ).show()
                 }
             }
-        } else {
-            requestPermissionLauncher.launch(
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                )
-            )
         }
     }
 
@@ -263,7 +260,10 @@ class AddStoryActivity : AppCompatActivity() {
 
         const val EXTRA_USER = "user"
 
-        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        private val REQUIRED_PERMISSIONS = arrayOf(
+            Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
         private const val REQUEST_CODE_PERMISSIONS = 10
     }
 
